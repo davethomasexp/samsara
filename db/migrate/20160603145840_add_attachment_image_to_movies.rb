@@ -1,11 +1,9 @@
  class AddAttachmentImageToMovies < ActiveRecord::Migration
-  def self.up
-    change_table :movies do |t|
-      t.attachment :image
-    end
+  def up
+    add_attachment :users, :avatar
   end
 
-  def self.down
-    remove_attachment :movies, :image
+  def down
+    remove_attachment :users, :avatar
   end
 end
