@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'zeus'
 gem 'devise'
 gem 'paperclip'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
