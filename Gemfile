@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # speeding up rails s
 gem 'zeus'
 # devise for user login
-gem 'devise',
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
