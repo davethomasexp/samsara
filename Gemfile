@@ -13,6 +13,7 @@ gem 'zeus'
 gem 'devise'
 gem 'paperclip'
 gem 'bootstrap-sass'
+gem 'searchkick'
 
 group :development, :test do
   gem 'byebug'
