@@ -4,23 +4,12 @@
       <div class="col-md-4">
         <%= image_tag @movie.image.url(:medium) %>
       </div>
-          <div class="col-md-7 col-md-offset-1">
-                <h1 class="review_title"><%= @movie.title %></h1>
-                <p><%= @movie.description %></p>
-              </tr>
-              <tr>
-                <td><strong>Length:</strong></td>
-                <td><%= @movie.movie_length %></td>
-              </tr>
-              <tr>
-                <td><strong>Director:</strong></td>
-                <td><%= @movie.director %></td>
-              </tr>
-              <tr>
-                <td><strong>Rating:</strong></td>
-                <td><%= @movie.rating %></td>
-              </tr>
-          <%= link_to "Write a Review", new_movie_review_path(@movie) %>
+          <div class="col-md-7">
+            <h1 class="review_title"><%= @movie.title %></h1>
+            <p><%= @movie.description %></p>
+            <p><strong>Length:</strong> <%= @movie.movie_length %></p>
+            <p><strong>Director:</strong> <%= @movie.director %></p>
+            <p><strong>Rating:</strong> <%= @movie.rating %></p>
           </div>
         </div>
     </div>
@@ -34,7 +23,8 @@
         <strong>Title Here</strong>
         <div class="star-rating" data-score=<%= review.rating %>></div>
         <strong>Posted by</strong> <%= review.user.email %> <strong>on</strong> <%= review.created_at.strftime("%b %d, %Y") %>
-        <p><%= review.comment %></p>
+        <p></p>
+        <%= review.comment %>
         </div>
       <% end %>
       <% end %>

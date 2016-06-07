@@ -6,10 +6,13 @@ body {
 }
 
 .review-title {
-	margin: 0 10px 20px 0;
+
+}
+h1 {
+	margin-top: 3px;
 }
 .reviews {
-	padding: 10px 30px;
+	padding: 10px 30px 10px 30px;
 	.star-rating {
 		padding-bottom: 2px;
 	}
