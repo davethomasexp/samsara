@@ -3,23 +3,13 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @movie.image.url(:medium) %>
-
-        <div class="star-rating" data-score= <%= @avg_review %> ></div>
-            <em><%= "#{@reviews.length} reviews" %></em>
-
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td></td>
-                <td><strong><%= @movie.title %></strong></td>
+      </div>
+          <div class="col-md-7 col-md-offset-1">
+                <h1 class="review_title"><%= @movie.title %></h1>
+                <p><%= @movie.description %></p>
               </tr>
               <tr>
-                <td><strong>Description:</strong></td>
-                <td><%= @movie.description %></td>
-              </tr>
-              <tr>
-                <td><strong>Movie length:</strong></td>
+                <td><strong>Length:</strong></td>
                 <td><%= @movie.movie_length %></td>
               </tr>
               <tr>
@@ -30,27 +20,24 @@
                 <td><strong>Rating:</strong></td>
                 <td><%= @movie.rating %></td>
               </tr>
-            </tbody>
-          </table>
           <%= link_to "Write a Review", new_movie_review_path(@movie) %>
+          </div>
         </div>
-      </div>
-      <div class="col-md-7 col-md-offset-1">
-        <h1 class="review_title"><%= @movie.title %></h1>
-        <p><%= @movie.description %></p>
-
-        <% if @reviews.blank? %>
-          <h3>No review just yet. Would you like to add the first?</h3>
-          <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-danger" %>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="reviews">
-              <div class="star-rating" data-score=<%= review.rating %>></div>
-              <p><%= review.comment %></p>
-            </div>
-        <% end %>
-        <% end %>
-      </div>
+    </div>
+    <div class="row">
+      <% if @reviews.blank? %>
+        <h3>No review just yet. Would you like to add the first?</h3>
+        <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-danger" %>
+      <% else %>
+      <% @reviews.each do |review| %>
+        <div class="reviews">
+        <strong>Title Here</strong>
+        <div class="star-rating" data-score=<%= review.rating %>></div>
+        <strong>Posted by</strong> <%= review.user.email %> <strong>on</strong> <%= review.created_at.strftime("%b %d, %Y") %>
+        <p><%= review.comment %></p>
+        </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
