@@ -3,6 +3,8 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @movie.image.url(:medium) %>
+        <div class="star-rating" data-score= <%= @avg_review %>></div>
+        <em><%= "#{@reviews.length} reviews" %></em>
       </div>
           <div class="col-md-7">
             <h1 class="review_title"><%= @movie.title %></h1>
@@ -20,14 +22,15 @@
       <% else %>
       <% @reviews.each do |review| %>
         <div class="reviews">
-        <strong>Title Here</strong>
+        <em><strong><%= review.title %></strong></em>
         <div class="star-rating" data-score=<%= review.rating %>></div>
-        <strong>Posted by</strong> <%= review.user.email %> <strong>on</strong> <%= review.created_at.strftime("%b %d, %Y") %>
+        <strong>Posted by</strong> <%= review.user.username %> <strong>on</strong> <%= review.created_at.strftime("%b %d, %Y") %>
         <p></p>
         <%= review.comment %>
         </div>
       <% end %>
       <% end %>
+      <%= link_to 'Edit', edit_movie_review_path(@movie, @reviews) %>
     </div>
   </div>
 </div>

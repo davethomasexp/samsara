@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @reviews = Review.find(params[:id])
+    @reviews.user_id = current_user.id
+    @reviews.movie_id = @movie.id
   end
 
   # POST /reviews
@@ -32,6 +35,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @movie, notice: 'Review was successfully updated.' }
@@ -56,7 +60,7 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id])
+      @review = Review.find(params[:review_id])
     end
 
     def set_movie
@@ -65,6 +69,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:rating, :comment)
+      params.require(:review).permit(:title, :rating, :comment)
     end
 end
